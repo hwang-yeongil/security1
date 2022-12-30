@@ -1,4 +1,4 @@
-package com.example.securiy1.config;
+package com.example.securiy1.config.oauth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -39,6 +39,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 		
 		User userEntity = userRepository.findByUsername(username);
 		if(userEntity == null) {
+			System.out.println("구글로그인 최초");
 			userEntity = User.builder()
 					.username(username)
 					.password(password)
@@ -48,6 +49,8 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 					.providerId(providerId)
 					.build();
 			userRepository.save(userEntity);
+		}else {
+			System.out.println("구글로그인이 이미 되어있음");
 		}
 		
 		return new PrincipalDetails(userEntity, oauth2User.getAttributes());

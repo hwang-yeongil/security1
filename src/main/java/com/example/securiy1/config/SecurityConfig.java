@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.example.securiy1.config.oauth.PrincipalOauth2UserService;
+
 @Configuration
 @EnableWebSecurity // 스프링 시큐리티 필터가 스프링 필터체인에 등록 됨
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
