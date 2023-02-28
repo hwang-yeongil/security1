@@ -97,4 +97,8 @@ public class IndexController {
 	public @ResponseBody String data() {
 		return "데이터정보";
 	}
+	
+//	게시판 controlloer
+	
+	
 }
