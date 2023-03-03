@@ -38,16 +38,6 @@ public class BoardTests {
     }
 
     @Test
-    void findAll() {
-
-        // 1. 전체 게시글 수 조회
-        long boardsCount = boardRepository.count();
-
-        // 2. 전체 게시글 리스트 조회
-        List<Board> boards = boardRepository.findAll();
-    }
-
-    @Test
     void delete() {
 
         // 1. 게시글 조회

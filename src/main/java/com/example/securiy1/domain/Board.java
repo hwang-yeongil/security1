@@ -1,16 +1,11 @@
 package com.example.securiy1.domain;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.hibernate.annotations.CreationTimestamp;
-
-import com.example.securiy1.model.User;
 
 import lombok.Builder;
 import lombok.Data;
