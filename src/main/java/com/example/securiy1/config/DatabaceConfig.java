@@ -12,15 +12,15 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
-//@PropertySource("classpath:/application.yml")
-@ConfigurationProperties(prefix = "application")
+@PropertySource("classpath:/application.properties")
+//@ConfigurationProperties(prefix = "application")
 //@Value("${spring.profiles.active}")
 
-@PropertySource(value = {"application.yml"}, factory = YamlLoadFactory.class)
+//@PropertySource(value = {"application.yml"}, factory = YamlLoadFactory.class)
 
 public class DatabaceConfig {
 	
-	@Bean(name="dataSource")
+	@Bean
 	@ConfigurationProperties("spring.datasource.hikari")
 	public HikariConfig hikariConfig() {
 		return new HikariConfig();

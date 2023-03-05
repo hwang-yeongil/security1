@@ -46,5 +46,5 @@ public class BoardTests {
         // 2. 게시글 삭제
         boardRepository.delete(entity);
     }
-
+//123
 }
