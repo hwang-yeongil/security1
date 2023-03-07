@@ -2,6 +2,7 @@ package com.example.securiy1.board;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -14,7 +15,8 @@ import com.example.securiy1.repository.BoardRepository;
 @SpringBootTest
 public class BoardTests {
 
-    @Autowired
+    private static final LocalDateTime LocalDateTime = null;
+	@Autowired
     BoardRepository boardRepository;
 
     @Test
@@ -25,6 +27,8 @@ public class BoardTests {
                 .title("1번 게시글 제목")
                 .content("1번 게시글 내용")
                 .writer("123")
+//                .insertTime(LocalDateTime)
+//                .updateTime(LocalDateTime)
                 .build();
 
         // 2. 게시글 저장
@@ -34,7 +38,7 @@ public class BoardTests {
         Board entity = boardRepository.findById((long) 1).get();
         assertThat(entity.getTitle()).isEqualTo("1번 게시글 제목");
         assertThat(entity.getContent()).isEqualTo("1번 게시글 내용");
-        assertThat(entity.getWriter()).isEqualTo("도뎡이");
+        assertThat(entity.getWriter()).isEqualTo("123");
     }
 
     @Test

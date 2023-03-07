@@ -15,6 +15,7 @@ public class WebMvcConfig implements WebMvcConfigurer{
 		resolver.setContentType("text/html; charset=UTF-8");
 		resolver.setPrefix("classpath:/templates/");
 		resolver.setSuffix(".html");
+		resolver.setSuffix(".jsp"); // 추가
 		
 		registry.viewResolver(resolver);
 	}

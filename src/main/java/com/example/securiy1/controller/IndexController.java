@@ -1,5 +1,10 @@
 package com.example.securiy1.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -24,6 +29,31 @@ public class IndexController {
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	@GetMapping("/indextest")
+	public List<Map<String, Object>> indextest() {
+        List<Map<String, Object>> members = new ArrayList<>();
+        for (int i = 1; i <= 20; i++) {
+            Map<String, Object> member = new HashMap<>();
+            member.put("id", i);
+            member.put("name", i + "번 개발자");
+            member.put("age", 10 + i);
+            members.add(member);
+        }
+        return members;
+    }
+	@GetMapping("/test2")
+	public List<Map<String, Object>> indextest2() {
+		List<Map<String, Object>> members = new ArrayList<>();
+		for (int i = 1; i <= 20; i++) {
+			Map<String, Object> member = new HashMap<>();
+			member.put("id", i);
+			member.put("name", i + "번 개발자");
+			member.put("age", 10 + i);
+			members.add(member);
+		}
+		return members;
+	}
 	
 	@GetMapping("/test/login")
 	public @ResponseBody String testLogin(Authentication authentication,

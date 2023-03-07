@@ -7,6 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,18 +26,22 @@ public class Board {
 	private String content;
 	private String writer; // user.id
 //	@CreationTimestamp
-	private LocalDateTime insertTime; 
+//	@CreatedDate
+	private LocalDateTime insertTime = LocalDateTime.now();
+//	@LastModifiedDate
 	private LocalDateTime updateTime;
 	
 	// insertTime = updateTime 수정시 updateTime 만 수정
 	
 	@Builder
-	public Board(String title, String content, String writer, LocalDateTime insertTime, LocalDateTime updateTime) {
+	public Board(String title, String content, String writer
+//			, LocalDateTime insertTime, LocalDateTime updateTime
+			) {
 		
 		this.title = title;
 		this.content = content;
 		this.writer = writer;
-		this.insertTime = insertTime;
-		this.updateTime = updateTime;
+//		this.insertTime = insertTime;
+//		this.updateTime = updateTime;
 	}
 }
