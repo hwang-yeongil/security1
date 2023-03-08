@@ -44,4 +44,11 @@ public class Board {
 //		this.insertTime = insertTime;
 //		this.updateTime = updateTime;
 	}
+	
+	public void update(String title, String content, String writer) {
+		this.title = title;
+		this.content = content;
+		this.writer = writer;
+		this.updateTime = LocalDateTime.now();
+	}
 }
