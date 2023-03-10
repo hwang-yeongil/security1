@@ -13,5 +13,8 @@ public class BoardPageController {
 		return "board/list";
 	}
 	
-	
+	@GetMapping("/write")
+	public String openBoardWrite() {
+		return "board/write";
+	}
 }
