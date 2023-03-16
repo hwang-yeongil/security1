@@ -25,6 +25,7 @@ public class Board {
 	private String title;
 	private String content;
 	private String writer; // user.id
+	private char deleteYn;
 //	@CreationTimestamp
 //	@CreatedDate
 	private LocalDateTime insertTime = LocalDateTime.now();
@@ -34,13 +35,14 @@ public class Board {
 	// insertTime = updateTime 수정시 updateTime 만 수정
 	
 	@Builder
-	public Board(String title, String content, String writer
+	public Board(String title, String content, String writer,char deleteYn
 //			, LocalDateTime insertTime, LocalDateTime updateTime
 			) {
 		
 		this.title = title;
 		this.content = content;
 		this.writer = writer;
+		this.deleteYn = deleteYn;
 //		this.insertTime = insertTime;
 //		this.updateTime = updateTime;
 	}
@@ -50,5 +52,9 @@ public class Board {
 		this.content = content;
 		this.writer = writer;
 		this.updateTime = LocalDateTime.now();
+	}
+	
+	public void delete() {
+		this.deleteYn = 'Y';
 	}
 }

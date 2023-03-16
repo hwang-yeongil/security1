@@ -2,6 +2,7 @@ package com.example.securiy1.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,14 +29,23 @@ public class BoardApiController {
 		return boardService.save(params);
 	}
 	
+	@PatchMapping("/boards/{id}")
+    public Long update(@PathVariable final Long id, @RequestBody final BoardRequestDto params) {
+        return boardService.update(id, params);
+    }
+	
+	@DeleteMapping("/boards/{id}")
+	public Long delete(@PathVariable final Long id) {
+		return boardService.delete(id);
+	}
+	
 	@GetMapping("/boards")
 	public List<BoardResponseDto> findAll(){
 		return boardService.findAll();
 	}
-	
-	@PatchMapping("/boards/{id}")
-    public Long save(@PathVariable final Long id, @RequestBody final BoardRequestDto params) {
-        return boardService.update(id, params);
-    }
-	
+
+	@GetMapping("/boards/{id}")
+	public BoardResponseDto findById(@PathVariable final Long id) { 
+		return boardService.findById(id);
+	}
 }

@@ -15,6 +15,7 @@ import com.example.securiy1.domain.BoardRequestDto;
 import com.example.securiy1.domain.BoardResponseDto;
 import com.example.securiy1.repository.BoardRepository;
 
+import groovyjarjarantlr4.v4.parse.ANTLRParser.finallyClause_return;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -46,10 +47,26 @@ public class BoardService {
 //	        throw new CustomException(ErrorCode.POSTS_NOT_FOUND);
 //	    }
 
-		
 		entity.update(params.getTitle(),params.getContent()	, params.getWriter());
-		
 		
 		return id;
 	}
+	
+	@Transactional
+	public Long delete(final Long id) {
+		Board entity = boardRepository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.POSTS_NOT_FOUND));
+		entity.delete();
+		return id;
+	}
+	
+	 /**
+     * 게시글 상세정보 조회
+     */
+    @Transactional
+    public BoardResponseDto findById(final Long id) {
+
+        Board entity = boardRepository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.POSTS_NOT_FOUND));
+//        entity.increaseHits();
+        return new BoardResponseDto(entity);
+    }
 }

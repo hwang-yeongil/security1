@@ -79,11 +79,13 @@
 				deleteYn: 'N'
 			};
 		
-			fetch('/api/boards', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
+			const id = /*[[ ${id} ]]*/;
+			const url = (id)? '/api/boards/${id}' : '/api/boards';
+			const method =(id)?	'PATCH' :'POST';
+			
+			fetch(url, {
+				method: method,
+				headers: {'Content-Type': 'application/json'},
 				body: JSON.stringify(params)
 		
 			}).then(response => {
