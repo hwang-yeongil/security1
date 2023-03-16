@@ -72,7 +72,7 @@ window.onload = () => {findAll();}
 							<tr>
     							<td>${json.length - idx}</td>
     							<td class="text-left">
-    								<a href="javascript: void(0);" onclick="goView[${obj.id}]">${obj.title}</a>
+    								<a href="javascript: void(0);" onclick="goView(${obj.id})">${obj.title}</a>
     							</td>
     							<td>${obj.writer}</td>
     							<td>${moment(obj.insertTime).format('YYYY-MM-DD HH:mm:ss')}</td>
@@ -86,7 +86,7 @@ window.onload = () => {findAll();}
 		}
 		
 		function goView(id){
-			location.href = '/board/view/${id}';
+			location.href = `/board/view/${id}`;
 		}
 		
 
