@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.securiy1.domain.BoardRequestDto;
@@ -40,8 +41,8 @@ public class BoardApiController {
 	}
 	
 	@GetMapping("/boards")
-	public List<BoardResponseDto> findAll(){
-		return boardService.findAll();
+	public List<BoardResponseDto> findAll(@RequestParam final char deleteYn){
+		return boardService.findAllByDeleteYn(deleteYn);
 	}
 
 	@GetMapping("/boards/{id}")

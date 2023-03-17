@@ -80,7 +80,7 @@
 			};
 		
 			const id = /*[[ ${id} ]]*/;
-			const url = (id)? '/api/boards/${id}' : '/api/boards';
+			const url = (id)? `/api/boards/${id}` : '/api/boards';
 			const method =(id)?	'PATCH' :'POST';
 			
 			fetch(url, {

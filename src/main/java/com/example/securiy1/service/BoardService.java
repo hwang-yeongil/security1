@@ -33,8 +33,15 @@ public class BoardService {
 	}
 //	게시글 조회
 	public List<BoardResponseDto> findAll(){
-		Sort sort =Sort.by(Direction.DESC, "id"	, "updateTime");
+		Sort sort =Sort.by(Direction.DESC, "id"	, "insertTime");
 		List<Board> list =boardRepository.findAll(sort);
+		return list.stream().map(BoardResponseDto::new).collect(Collectors.toList());
+	}
+	
+//	게시글 리스트 조회 ( 삭제여부
+	public List<BoardResponseDto> findAllByDeleteYn(final char deleteYn){
+		Sort sort = Sort.by(Direction.DESC, "id", "insertTime");
+		List<Board> list = boardRepository.findAllByDeleteYn(deleteYn, sort);
 		return list.stream().map(BoardResponseDto::new).collect(Collectors.toList());
 	}
 	

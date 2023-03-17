@@ -42,7 +42,7 @@ public class Board {
 		this.title = title;
 		this.content = content;
 		this.writer = writer;
-		this.deleteYn = deleteYn;
+		this.deleteYn = 'N';
 //		this.insertTime = insertTime;
 //		this.updateTime = updateTime;
 	}
