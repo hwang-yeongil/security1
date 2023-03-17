@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- <html lang="ko" xmlns:th="http://www.thymeleaf.org" layout:decorate="layout"> -->
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
 <!-- layout:decorator 삭제됨. layout:decorate로 변경 필요 -->
 
@@ -19,38 +18,47 @@
     </div>
 
     <!--/* 게시글 영역 */-->
-    <div class="table-responsive clearfix">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>번호</th>
-                    <th>제목</th>
-                    <th>작성자</th>
-                    <th>등록일</th>
-                </tr>
-            </thead>
+    <div class="row justify-content-center" id="list">
 
-            <!--/* 게시글 리스트 Rendering 영역 */-->
-            <tbody id="list">
-
-            </tbody>
-        </table>
+      <div class="col-md-6 col-lg-4 mb-5" style="border:1px solid gold">
+        <div class="portfolio-item mx-auto" style="border:1px solid black">
+          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+            <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+          </div>
+          <!-- 게시물 제목 -->
+          <p>게시물 제목</p>
+          <p>날짜 (우측정렬)</p>
+          <!-- <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="..." /> -->
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4 mb-5" style="border:1px solid gold">
+        <div class="portfolio-item mx-auto" style="border:1px solid black">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+            </div>
+            <!-- 게시물 제목 -->
+            <p>게시물 제목</p>
+            <p>날짜 (우측정렬)</p>
+            <!-- <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="..." /> -->
+        </div>
+      </div>
+    </div>
+    
+    
+    
         <div class="btn_wrap text-right">
             <a th:href="@{/board/write}" class="btn btn-primary waves-effect waves-light">Write</a>
         </div>
 
         <!-- 페이지네이션 Rendering 영역 -->
-        <nav>
-
-        </nav>
-    </div>
     </th:block>
 
 
     <th:block layout:fragment="script">
     <script th:inline="javascript">
 	/*<![CDATA[*/
-window.onload = () => {findAll();}
+		window.onload = () => {findAll();}
 
 		/**
 		 * 게시글 리스트 조회
@@ -69,14 +77,17 @@ window.onload = () => {findAll();}
 				} else {
 					json.forEach((obj, idx) => {
 						html += `
-							<tr>
-    							<td>${json.length - idx}</td>
-    							<td class="text-left">
-    								<a href="javascript: void(0);" onclick="goView(${obj.id})">${obj.title}</a>
-    							</td>
-    							<td>${obj.writer}</td>
-    							<td>${moment(obj.insertTime).format('YYYY-MM-DD HH:mm:ss')}</td>
-							</tr>
+			              <div class="col-md-6 col-lg-4 mb-5" style="border:1px solid gold">
+			                <div class="portfolio-item mx-auto" style="border:1px solid black">
+			                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+			                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+			                    </div>
+			                    <!-- 게시물 제목 -->
+			                    <p><a href="javascript: void(0);" onclick="goView(${obj.id})">${obj.title}</a></p>
+			                    <p>${moment(obj.insertTime).format('YYYY-MM-DD HH:mm:ss')}</p>
+			                    <!-- <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="..." /> -->
+			                </div>
+			              </div>
 						`;
 					});
 				}
