@@ -42,19 +42,7 @@ public class IndexController {
         }
         return members;
     }
-	@GetMapping("/test2")
-	public List<Map<String, Object>> indextest2() {
-		List<Map<String, Object>> members = new ArrayList<>();
-		for (int i = 1; i <= 20; i++) {
-			Map<String, Object> member = new HashMap<>();
-			member.put("id", i);
-			member.put("name", i + "번 개발자");
-			member.put("age", 10 + i);
-			members.add(member);
-		}
-		return members;
-	}
-	
+
 	@GetMapping("/test/login")
 	public @ResponseBody String testLogin(Authentication authentication,
 			@AuthenticationPrincipal PrincipalDetails userDetails){
