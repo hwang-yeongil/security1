@@ -4,7 +4,7 @@
 
     <th:block layout:fragment="content">
     <!--/* 검색 영역 */-->
-    <div class="input-group" id="adv-search">
+    <!-- <div class="input-group" id="adv-search">
         <select id="searchType" class="form-control" style="width: 100px;">
             <option value="">전체</option>
             <option value="title">제목</option>
@@ -15,11 +15,13 @@
         <button type="button" class="btn btn-primary">
             <span aria-hidden="true" class="glyphicon glyphicon-search"></span>
         </button>
+    </div> -->
+	<div class="btn_wrap text-right" style="margin-bottom: 5px">
+        <a th:href="@{/board/write}" class="btn btn-primary waves-effect waves-light">Write</a>
     </div>
-
     <!--/* 게시글 영역 */-->
     <div class="row justify-content-center" id="list">
-
+	
       <div class="col-md-6 col-lg-4 mb-5" style="border:1px solid gold">
         <div class="portfolio-item mx-auto" style="border:1px solid black">
           <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
@@ -31,25 +33,7 @@
           <!-- <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="..." /> -->
         </div>
       </div>
-      
-      <div class="col-md-6 col-lg-4 mb-5" style="border:1px solid gold">
-        <div class="portfolio-item mx-auto" style="border:1px solid black">
-            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-            </div>
-            <!-- 게시물 제목 -->
-            <p>게시물 제목</p>
-            <p>날짜 (우측정렬)</p>
-            <!-- <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="..." /> -->
-        </div>
-      </div>
     </div>
-    
-    
-    
-        <div class="btn_wrap text-right">
-            <a th:href="@{/board/write}" class="btn btn-primary waves-effect waves-light">Write</a>
-        </div>
 
         <!-- 페이지네이션 Rendering 영역 -->
     </th:block>
@@ -77,14 +61,20 @@
 				} else {
 					json.forEach((obj, idx) => {
 						html += `
-			              <div class="col-md-6 col-lg-4 mb-5" style="border:1px solid gold">
-			                <div class="portfolio-item mx-auto" style="border:1px solid black">
+			              <div class="col-md-6 col-lg-4 mb-5">
+			                <div class="portfolio-item mx-auto  do-memo">
+			                    
+			                    <!-- 게시물 제목 
+			                    
 			                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-			                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-			                    </div>
-			                    <!-- 게시물 제목 -->
-			                    <p><a href="javascript: void(0);" onclick="goView(${obj.id})">${obj.title}</a></p>
-			                    <p>${moment(obj.insertTime).format('YYYY-MM-DD HH:mm:ss')}</p>
+		                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+		                    	</div>
+			                    -->
+			                    
+			                   
+			                    
+			                   <h2 class="m-title"><a href="javascript: void(0);" onclick="goView(${obj.id})">${obj.title}</a></h2>
+			                    <p class="m-date">${moment(obj.insertTime).format('YYYY-MM-DD')}</p>
 			                    <!-- <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="..." /> -->
 			                </div>
 			              </div>
@@ -99,9 +89,10 @@
 		function goView(id){
 			location.href = `/board/view/${id}`;
 		}
-		
+
 
 	/*]]>*/
     </script>
+   
     </th:block>
 </html>
