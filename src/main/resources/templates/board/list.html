@@ -63,14 +63,19 @@ window.onload = () => {findAll();}
 				}
 			}).then(json => {
 				let html = '';
-
+			
+				console.log(json);
 				if (!json.length) {
 					html = '<td colspan="5">등록된 게시글이 없습니다.</td>';
+					console.log(json);
 				} else {
 					json.forEach((obj, idx) => {
+						console.log(obj.id);
+						console.log(idx);
 						html += `
 							<tr>
     							<td>${json.length - idx}</td>
+    							
     							<td class="text-left">
     								<a href="javascript: void(0);" onclick="goView(${obj.id})">${obj.title}</a>
     							</td>
